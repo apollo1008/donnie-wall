@@ -108,8 +108,8 @@ export default function Wall() {
 
   return (
     <div className="min-h-screen bg-white text-black">
-      <div className="flex">
-        <div className="w-64 bg-gray-100 h-screen p-4 border-r">
+      <div className="flex flex-col lg:flex-row">
+        <div className="w-full lg:w-64 bg-gray-100 lg:h-screen p-4 border-r">
           <img
             src="/profile.jpg"
             alt="Profile"
@@ -128,8 +128,8 @@ export default function Wall() {
           </div>
         </div>
 
-        <div className="flex-1 p-8">
-          <div className="bg-gradient-to-r from-gray-100 to-white border rounded p-6">
+        <div className="flex-1 p-4 sm:p-6 md:p-8">
+          <div className="bg-gradient-to-r from-gray-100 to-white border rounded p-4 sm:p-6">
             <Textarea
               placeholder="What's on your mind?"
               value={content}
@@ -162,7 +162,7 @@ export default function Wall() {
               ) : imageUrl ? (
                 <img src={imageUrl} alt="Uploaded" className="mx-auto h-40 object-contain" />
               ) : (
-                <p className="text-sm text-muted-foreground">Drag & drop an image or click to upload</p>
+                <p className="text-sm text-muted-foreground">Drag & drop an image or tap to upload</p>
               )}
               <input
                 type="file"
@@ -177,9 +177,9 @@ export default function Wall() {
             </div>
 
             <div className="mt-4 text-right">
-              <Button onClick={handleSubmit} disabled={loading || content.length === 0}>
+              <Button onClick={handleSubmit} disabled={loading || content.length === 0} className="w-full sm:w-auto">
                 {loading ? (
-                  <span className="flex items-center gap-2"><Loader2 className="animate-spin w-4 h-4" /> Sharing...</span>
+                  <span className="flex justify-center items-center gap-2"><Loader2 className="animate-spin w-4 h-4" /> Sharing...</span>
                 ) : 'Share'}
               </Button>
             </div>
@@ -196,7 +196,7 @@ export default function Wall() {
                     {new Date(post.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </p>
                   {post.image_url && (
-                    <img style={{maxWidth: "700px"}} src={post.image_url} alt="attachment" className="rounded-md mb-2" />
+                    <img src={post.image_url} alt="attachment" className="rounded-md mb-2" />
                   )}
                   <p>{post.content}</p>
                 </div>
