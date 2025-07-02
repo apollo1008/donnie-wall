@@ -113,7 +113,7 @@ export default function Wall() {
           <img
             src="/profile.jpg"
             alt="Profile"
-            className="rounded-full mx-auto"
+            className="rounded-full w-48 h-48 mx-auto"
           />
           <div className="text-center mt-4">
             <h2 className="text-lg font-semibold">Donnie Minter</h2>
